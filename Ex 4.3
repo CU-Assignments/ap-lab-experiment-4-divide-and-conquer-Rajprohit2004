@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> beautifulArray(int n) {
+        if (n == 1) return {1}; // Base case
+
+        vector<int> oddPart = beautifulArray((n + 1) / 2); // Odd-indexed elements
+        vector<int> evenPart = beautifulArray(n / 2);      // Even-indexed elements
+
+        vector<int> result;
+        for (int x : oddPart) result.push_back(2 * x - 1); // Transform to odd numbers
+        for (int x : evenPart) result.push_back(2 * x);    // Transform to even numbers
+
+        return result;
+    }
+};
